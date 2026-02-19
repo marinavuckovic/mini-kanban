@@ -34,21 +34,36 @@ export function FocusTimer() {
     setIsRunning(false);
   };
   return (
-    <div>
-      <h1>Focus Timer</h1>
-      <h1>
+    <div className="flex flex-col items-center gap-3 bg-gray-700 rounded mx-5 mb-5 shadow-lg">
+      <h1 className="shadow-lg bg-gray-800 rounded-md text-gray-200 font-bold px-8 py-6 w-full text-center ">
+        Focus Timer
+      </h1>
+      <h1 className="text-gray-300 font-bold px-8 py-3 w-full text-center font-mono text-6xl">
         {Math.floor(timer / 60)}:{(timer % 60).toString().padStart(2, '0')}
       </h1>
-      <button onClick={startInterval}>Start</button>
-      <button
-        onClick={() => {
-          clearInterval(intervalRef.current);
-          intervalRef.current = null;
-        }}
-      >
-        Pause
-      </button>
-      <button onClick={resetInterval}>Reset</button>
+      <div className="w-full flex justify-evenly">
+        <button
+          className="my-3 px-3 py-2 text-gray-300 bg-gray-500 rounded shadow-lg hover:bg-green-500"
+          onClick={startInterval}
+        >
+          Start
+        </button>
+        <button
+          className="my-3 px-3 py-2 text-gray-300 bg-gray-500 rounded shadow-lg hover:bg-gray-800"
+          onClick={() => {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+          }}
+        >
+          Pause
+        </button>
+        <button
+          className="my-3 px-3 py-2 text-gray-300 bg-gray-500 rounded shadow-lg hover:bg-red-500"
+          onClick={resetInterval}
+        >
+          Reset
+        </button>
+      </div>
     </div>
   );
 }
